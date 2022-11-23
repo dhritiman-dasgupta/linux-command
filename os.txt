@@ -1,0 +1,90 @@
+1)checking palindrome of a string.
+echo "enter the string :"
+read str
+rev=""
+l=${#str}
+for(( i=$l-1; i>=0; i-- ))
+do
+rev="$rev${str:$i:1}"
+done
+if [ $str == $rev ]
+then
+echo "palindrome"
+else
+echo "not palindrome"
+fi
+
+2)convert lower character of a file to upper character.
+file=$1
+file1=$2
+tr '[:lower:]' '[:upper:]' <$file>$file1
+cat $file1
+
+3)pascle triangle.
+echo "enter number of rows :"
+read n
+for (( r=1; r<=$n; r++ ))
+do
+v=1
+echo -n "$v"
+for (( c=1; c<$r; c++ ))
+do
+v2=$((v*(r-c)/c))
+echo -n "$v2"
+v=$v2
+done
+echo ""
+done
+
+4)prime check
+echo "enter the number :"
+read n
+f=0
+for (( i=2; i<=$n/2; i++ ))
+do
+if [ $((n%i)) == 0 ]
+then
+f=1
+break
+fi
+done
+if [ $f == 1 ]
+then
+echo "not prime"
+else
+echo "prime"
+fi
+
+5)fibonacchi series
+echo "enter the number of terms :"
+read n
+a=0
+b=1
+echo -n "$a $b"
+for ((i=3; i<=$n; i++ ))
+do
+c=$((a+b))
+echo -n " $c"
+a=$b
+b=$c
+done
+
+6)Read+write+execute-->
+for file in *
+if [ -f $file ]
+then
+if [ -r $file -a -w $file -a -x $file ]
+then
+echo "$file"
+fi
+fi
+done
+
+7)word+char from a file->
+f=$1
+echo "No of characters:"
+wc -c $f
+echo "No of words:"
+wc -w $f
+echo "No of lines:"
+wc -l $f
